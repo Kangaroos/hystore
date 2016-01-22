@@ -1,0 +1,52 @@
+{
+  "name": "hystore",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "koala-bear": "0.0.7",
+    "bluebird": "^2.10.2",
+    "bourbon": "^4.2.6",
+    "bourbon-neat": "^1.7.2",
+    "debug": "^2.2.0",
+    "fstream": "^1.0.8",
+    "glob": "^5.0.15",
+    "gulp-livereload": "^3.8.1",
+    "lodash": "^3.10.1",
+    "moment": "^2.10.6",
+    "passport-strategy": "^1.0.0",
+    "qr-image": "^3.1.0",
+    "read-yaml": "^1.0.0"
+  },
+  "devDependencies": {
+    "concur-gulp-rename": "^1.0.0",
+    "css-loader": "^0.19.0",
+    "file-loader": "^0.8.4",
+    "url-loader": "^0.5.6",
+    "del": "^2.0.2",
+    "dust-loader": "^1.0.1",
+    "dustjs-linkedin": "^2.7.2",
+    "gulp": "^3.9.0",
+    "gulp-gzip": "^1.2.0",
+    "image-maxsize-webpack-loader": "^0.1.1",
+    "image-webpack-loader": "^1.6.2",
+    "node-sass": "^3.3.3",
+    "sass-loader": "^3.0.0",
+    "style-loader": "^0.13.0",
+    "webpack": "^1.12.2",
+    "webpack-stream": "^2.1.1"
+  },
+  "jshintConfig": {
+    "node": true,
+    "esnext": true
+  }
+}

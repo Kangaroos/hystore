@@ -1,0 +1,4 @@
+{>"admin/common/admin.layout.dust"/}
+{+content}
+<h1>Admin welcome</h1>
+{/content}
