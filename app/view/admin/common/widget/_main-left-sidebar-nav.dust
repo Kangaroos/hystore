@@ -3,7 +3,7 @@
         <li class="user-details cyan darken-2">
             <div class="row">
                 <div class="col col s4 m4 l4">
-                    <img src="{@static src="images/logo.png" /}" alt="" class="circle responsive-img valign profile-image">
+                    {!<img src="{@static src="images/logo.png" /}" alt="" class="circle responsive-img valign profile-image">!}
                 </div>
                 <div class="col col s8 m8 l8">
                     <ul id="profile-dropdown" class="dropdown-content">
@@ -24,16 +24,16 @@
                 </div>
             </div>
         </li>
-        <li class="bold active"><a href="/admin" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i> Dashboard</a>
+        <li class="bold active"><a href="{@route route="/admin"/}" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i> 后台管理</a>
         </li>
         <li class="no-padding">
             <ul class="collapsible collapsible-accordion">
                 <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-view-carousel"></i> 一物一码</a>
                     <div class="collapsible-body">
                         <ul>
-                            <li><a href="#">产品管理</a>
+                            <li><a href="{@route route="/admin/qr/products"/}">产品管理</a>
                             </li>
-                            <li><a href="#">二维码管理</a>
+                            <li><a href="{@route route="/admin/qr/related"/}">二维码管理</a>
                             </li>
                         </ul>
                     </div>
@@ -53,7 +53,7 @@
                 <li class="bold"><a class="collapsible-header  waves-effect waves-cyan"><i class="mdi-image-palette"></i> 数据报表</a>
                     <div class="collapsible-body">
                         <ul>
-                            <li><a href="ui-alerts.html">待开发</a>
+                            <li><a href="#">待开发</a>
                             </li>
                         </ul>
                     </div>

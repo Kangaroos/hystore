@@ -1,0 +1,61 @@
+@import "_bourbon";
+@import "_neat";
+.main {
+  position: relative;
+  left:0;
+  top:0;
+  z-index: 1;
+  img.bg-img {
+    width: 100%;
+    pointer-events: none;
+  }
+  .rotary-box {
+    position: absolute;
+    z-index: 100;
+    left: 50%;
+    top: 48%;
+    width: 90%;
+    margin-left: -45%;
+    .rotary {
+      display: block;
+      position: relative;
+      width: 100%;
+
+      .outer {
+        margin: 0 auto;
+        width: 100%;
+
+        img {
+          width: 100%;
+          pointer-events: none;
+        }
+      }
+
+      .inner {
+        position: absolute;
+        left: 50%;
+        top: 30%;
+        margin-left: -25%;
+        width: 50%;
+        text-align: center;
+
+        img {
+          width: 50%;
+          display: block;
+          margin: 0 auto;
+          pointer-events: none;
+        }
+      }
+    }
+  }
+
+  img.qrcode {
+    position: absolute;
+    bottom: 5%;
+    left: 50%;
+    width: 30%;
+    margin-left: -15%;
+  }
+
+}
+

@@ -56,8 +56,7 @@
 
         <!-- START CONTENT -->
         <section id="content">
-            {+content}
-            {/content}
+           {+content}{/content}
         </section>
         <!-- END CONTENT -->
     </div>
@@ -65,17 +64,6 @@
 
 </div>
 <!-- END MAIN -->
-
-<!-- START FOOTER -->
-<footer class="page-footer">
-    <div class="footer-copyright">
-        <div class="container">
-            Copyright © 2015 <a class="grey-text text-lighten-4" href="http://www.shheyu.com" target="_blank">上海禾煜</a> All rights reserved.
-            <span class="right"> Design and Developed by <a class="grey-text text-lighten-4" href="http://imyecn.com/">叶尐楠</a></span>
-        </div>
-    </div>
-</footer>
-<!-- END FOOTER -->
 
 <!-- jQuery Library -->
 <script type="text/javascript" src="{@static src="js/plugins/jquery-1.11.2.min.js" /}"></script>

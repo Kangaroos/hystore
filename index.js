@@ -2,17 +2,22 @@
 
 const KoalaBear = require('koala-bear');
 const fs = require('fs');
+const readYaml = require('read-yaml');
+const WechatAPI = require('co-wechat-api');
 
 class HyStoreService extends KoalaBear {
     constructor() {
 		super(module);
 		var self = this;
+		var config = readYaml.sync(require('path').resolve(self._basePath, "./config/wechat.yml"))[self._app.env];
+
+		self.wechatApi = new WechatAPI(config.appId, config.appSecret);
 	    self._app.use(function* (next){
 			yield* next;
 	    })
 	}
 	bootstrap() {
-		this.use(require("./lib/AdminAuthStrategy"))
+		this.use(require("./lib/AdminAuthStrategy"));
 		this.use(function(){
 			return {
 				setup: function*(next) {

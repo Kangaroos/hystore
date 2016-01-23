@@ -1,0 +1,29 @@
+{>"common/mobile.layout.dust"/}
+{<title}我的车辆{/title}
+{<styles}
+    <script src="{@static src="/activity/bigrotarytable/main.scss.js" /}"></script>
+{/styles}
+{<content}
+    <div class="main">
+        <img src="{@static src="/images/bg.jpg" /}" class="bg-img" alt="禾煜大抽奖">
+        <div class="rotary-box">
+            <div class="rotary">
+                <div class="outer">
+                    <img src="{@static src="/images/activity-lottery-1.png" /}">
+                </div>
+                <div class="inner">
+                    <img src="{@static src="/images/activity-lottery-2.png" /}">
+                </div>
+            </div>
+        </div>
+        <img class="qrcode" src="{qrurl}" alt="微信二维码">
+    </div>
+
+{/content}
+{<js}
+    <script>
+        $script.ready('bundle', function(){
+            $script(["{@static src="/activity/bigrotarytable/main.js" /}"]);
+        });
+    </script>
+{/js}

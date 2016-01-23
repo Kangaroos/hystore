@@ -18,22 +18,12 @@ function getFolders(dir) {
 gulp.task('webpack', function() {
     return gulp.src("webpack.config.js")
         .pipe(webpack(require('./webpack.config.js'), require('webpack')))
-        .pipe(gulp.dest('public'))
-        .pipe(livereload());
+        .pipe(gulp.dest('public'));
 });
 
 gulp.task('copy', function() {
-    gulp.src("./vendors/dashboard/css/**/*")
-        .pipe(gulp.dest('public/css'))
-        .pipe(livereload());
-    gulp.src("./vendors/dashboard/js/**/*")
-        .pipe(gulp.dest('public/js'))
-        .pipe(livereload());
-    gulp.src("./vendors/dashboard/font/**/*")
-        .pipe(gulp.dest('public/font'));
-    return gulp.src("./vendors/dashboard/images/**/*")
-        .pipe(gulp.dest('public/images'))
-        .pipe(livereload());
+    return gulp.src("./vendors/dashboard/**/*")
+        .pipe(gulp.dest('public'));
 });
 
 gulp.task('build', ['copy', 'webpack']);
@@ -60,8 +50,7 @@ gulp.task('buildgz', ['build'], function() {
         .pipe(require('gulp-size')({
             showFiles: true
         }))
-        .pipe(gulp.dest('public'))
-        .pipe(livereload());
+        .pipe(gulp.dest('public'));
 });
 gulp.task('deploy', ['build', 'buildgz'], function() {
     var readYaml = require('read-yaml');
@@ -92,6 +81,7 @@ gulp.task('httpServer', function() {
     });
 });
 gulp.task('server', ['httpServer', 'build'],function(){
+    gulp.src("./public/**/*").pipe(livereload());
     livereload.listen();
     return gulp.watch(['app/assets/**', 'app/view/**', 'vendors/dashboard/css/**', 'vendors/dashboard/js/**', 'vendors/dashboard/images/**'], ["build"]);
 });
