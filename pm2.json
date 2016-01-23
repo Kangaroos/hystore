@@ -1,0 +1,26 @@
+{
+  "apps": [
+    {
+      "name": "hystore",
+      "script": "node_modules/.bin/koala-bear",
+      "args": [
+        "start"
+      ],
+      "exec_interpreter": "node",
+      "log_date_format": "YYYY-MM-DD HH:mm Z",
+      "ignore_watch": [
+        "[\\/\\\\]\\./",
+        "node_modules"
+      ],
+      "watch": false,
+      "node_args": "--harmony",
+      "exec_mode": "cluster_mode",
+      "instances": 2,
+      "env": {
+        "NODE_ENV": "production",
+        "DEBUG_FD": "1",
+        "DEBUG": "hystore*,koala*,heyu*"
+      }
+    }
+  ]
+}
