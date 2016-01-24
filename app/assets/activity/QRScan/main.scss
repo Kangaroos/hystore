@@ -1,0 +1,47 @@
+@import "_bourbon";
+@import "_neat";
+
+.loading {
+  margin: 0 auto;
+  margin-top: 100px;
+  width: 70px;
+  height: 70px;
+  line-height: 0;
+}
+
+.loading span {
+  display: inline-block;
+  width: calc(100% / 3 - 10px);
+  height: calc(100% / 3 - 10px);
+  margin: 5px;
+  background: #222;
+  border-radius: 2px;
+  animation: loading 1.5s infinite;
+}
+
+.loading-text {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.loading span:nth-of-type(1) { animation-delay: 0.1s }
+.loading span:nth-of-type(2) { animation-delay: 0.3s }
+.loading span:nth-of-type(3) { animation-delay: 0.5s }
+.loading span:nth-of-type(4) { animation-delay: 0.3s }
+.loading span:nth-of-type(5) { animation-delay: 0.5s }
+.loading span:nth-of-type(6) { animation-delay: 0.7s }
+.loading span:nth-of-type(7) { animation-delay: 0.5s }
+.loading span:nth-of-type(8) { animation-delay: 0.7s }
+.loading span:nth-of-type(9) { animation-delay: 0.9s }
+
+@keyframes loading {
+0 {
+  transform: scale(1, 1);
+}
+50% {
+    transform: scale(1.6, 1.6);
+  }
+100% {
+     transform: scale(1, 1);
+   }
+}

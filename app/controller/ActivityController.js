@@ -8,8 +8,8 @@ exports = module.exports = function(app) {
     var m = app.models;
     app.group('/activity', function(router){
         router.get('/:qrcode', function* scanqr(){
-            var result = yield app.wechatApi.createTmpQRCode(123124314,2592000);
-            yield this.render('activity/bigrotarytable.dust', {qrurl: app.wechatApi.showQRCodeURL(result.ticket)});
+            //var result = yield app.wechatApi.createTmpQRCode("scanQRActivity",2592000);
+            yield this.render('activity/bigrotarytable.dust');
         });
 
         router.post('/odds', function* scanqr(){

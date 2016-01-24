@@ -1,12 +1,12 @@
 "use strict";
-exports.name = "CreateProductQRVertex";
+exports.name = "CreateQRCode";
 
 exports.up = function (db) {
   // @todo implementation
-    return db.class.create('ProductQR', 'V')
+    return db.class.create('QRCode', 'V')
         .then(function (c) {
             return Promise.all([
-                c.property.create({name: 'serialNumber', type: 'String', mandatory: true}),
+                c.property.create({name: 'batchID', type: 'String', mandatory: true}),
                 c.property.create({name: 'spec', type: 'String'}),
                 c.property.create({name: 'origin', type: 'String'}),
                 c.property.create({name: 'howEat', type: 'String'}),

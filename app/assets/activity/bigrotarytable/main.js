@@ -28,10 +28,15 @@ define([ 'jquery' , './_jQueryRotate'], function($){
             });
         }
         $(".inner").on("click", function() {
-            /***
-             * ajax操作返回数据*
-             * **/
             !rotating && lottery();
+        });
+
+        $('.product-info').on('click', function(e) {
+
+        });
+
+        $('.lucky-desc').on('click', function(e) {
+
         });
     });
 });

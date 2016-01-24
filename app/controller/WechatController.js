@@ -27,31 +27,33 @@ exports = module.exports = function(app) {
     //    defaultRedirect: "/users/signin"
     //}, wechatAuth));
 
+
     app.group('/wechat', function(router) {
         router.get('/receive', wechatReply);
         router.post('/receive', wechatReply);
 
+        router.get('/qrscan',function * (next) {
+            var self = this;
+
+            var config = yield* app.wechatApi.getJsConfig({
+                debug: false,
+                jsApiList: [
+                    'scanQRCode'
+                ],
+                url: domain + self.originalUrl
+            });
+
+            yield this.render('activity/QRScan.dust', {
+                wxParam: config
+            })
+        });
+
+        
         //router.get('/action', app.passport.authenticate('eskygo-wechat'), function*(next) {
         //    var urlParse = require("url").parse(this.query.toUrl, true);
         //    this.redirect(require("url").format(urlParse));
         //});
-
-        router.get('/qr/dynamic',function * (next) {
-            var self = this;
-            var result = yield app.wechatApi.createTmpQRCode(123124314,2592000);
-
-            //var config = yield* wechatApi.getJsConfig({
-            //    debug: false,
-            //    jsApiList: [
-            //        'scanQRCode'
-            //    ],
-            //    url: domain + self.originalUrl
-            //});
-
-            return wechatApi.showQRCodeURL(result.ticket);
-        });
-
     });
 
-    app.get('/auth/wechat/callback', app.passport.authenticate('eskygo-wechat'));
+    //app.get('/auth/wechat/callback', app.passport.authenticate('eskygo-wechat'));
 };

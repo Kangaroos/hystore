@@ -16,7 +16,9 @@
                 </div>
             </div>
         </div>
-        <img class="qrcode" src="{qrurl}" alt="微信二维码">
+        <img class="product-info" src="{@static src="/images/cpjs.png" /}" alt="产品介绍">
+        <img class="lucky-desc" src="{@static src="/images/cjsm.png" /}" alt="抽奖说明">
+        <img class="qrcode" src="{@static src="/images/showqrcode.jpeg" /}" alt="微信二维码">
     </div>
 
 {/content}
