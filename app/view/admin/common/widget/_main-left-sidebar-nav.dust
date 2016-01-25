@@ -14,8 +14,6 @@
                         <li><a href="#"><i class="mdi-communication-live-help"></i> 帮助</a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="#"><i class="mdi-action-lock-outline"></i> 锁定</a>
-                        </li>
                         <li><a href="#"><i class="mdi-hardware-keyboard-tab"></i> 退出</a>
                         </li>
                     </ul>
@@ -33,7 +31,7 @@
                         <ul>
                             <li><a href="{@route route="/admin/qr/products"/}">产品管理</a>
                             </li>
-                            <li><a href="{@route route="/admin/qr/related"/}">二维码管理</a>
+                            <li><a href="{@route route="/admin/qr/qrcode"/}">二维码管理</a>
                             </li>
                         </ul>
                     </div>
@@ -45,8 +43,8 @@
                 <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-invert-colors"></i> 营销管理</a>
                     <div class="collapsible-body">
                         <ul>
-                            <li><a href="#">活动管理</a>
-                            </li>
+                            <li><a href="#">活动管理</a></li>
+                            <li><a href="#">奖品管理</a></li>
                         </ul>
                     </div>
                 </li>
