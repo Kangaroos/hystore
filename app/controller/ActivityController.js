@@ -1,4 +1,4 @@
-"use strict"
+"use strict";
 var debug = require('debug')('hystore:admin:AdminController'),
     Promise = require('bluebird'),
     LotteryOods = require('../../lib/lottery_odds');
@@ -8,7 +8,7 @@ exports = module.exports = function(app) {
     var m = app.models;
     app.group('/activity', function(router){
         router.get('/:qrcode', function* scanqr(){
-            var result = yield app.wechatApi.createTmpQRCode("scanQRActivity",2592000);
+            var result = yield app.wechatApi.createTmpQRCode( 100, 2592000);
             yield this.render('activity/bigrotarytable.dust',{qrurl: app.wechatApi.showQRCodeURL(result.ticket)});
         });
 
@@ -18,37 +18,37 @@ exports = module.exports = function(app) {
                 id: 1,
                 min: 272,
                 max: 313,
-                prize: '恭喜获得200元优惠券',
+                prize: '恭喜获得200元优惠券,长按下方二维码关注公众号领取优惠!',
                 v: 10
             }, {
                 id: 2,
                 min: 92,
                 max: 133,
-                prize: '恭喜获得100元优惠券',
+                prize: '恭喜获得100元优惠券,长按下方二维码关注公众号领取优惠!',
                 v: 40
             }, {
                 id: 3,
                 min: 182,
                 max: 223,
-                prize: '恭喜获得20元优惠券',
+                prize: '恭喜获得20元优惠券,长按下方二维码关注公众号领取优惠!',
                 v: 3600
             }, {
                 id: 4,
                 min: 137,
                 max: 178,
-                prize: '恭喜获得10元优惠券',
+                prize: '恭喜获得10元优惠券,长按下方二维码关注公众号领取优惠!',
                 v: 6350
             }, {
                 id: 5,
                 min: 317,
                 max: 358,
-                prize: '恭喜获得5元优惠券',
+                prize: '恭喜获得5元优惠券,长按下方二维码关注公众号领取优惠!',
                 v: 30000
             }, {
                 id: 6,
                 min: 2,
                 max: 43,
-                prize: '恭喜获得2元优惠券',
+                prize: '恭喜获得2元优惠券,长按下方二维码关注公众号领取优惠!',
                 v: 60000
             }];
 

@@ -1,0 +1,1 @@
+insert into PgBasic ( companyName, password, companyCode, passwordEnc, parkId ) values ( 'eGo', '123321', '00001','', '#84:0' )

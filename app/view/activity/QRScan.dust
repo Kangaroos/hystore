@@ -3,50 +3,52 @@
 {<title}扫一扫{/title}
 <script src="/activity/QRScan/main.scss.js"></script>
 {<content}
-    <div class="loading">
-        <span></span><span></span><span></span><br/>
-        <span></span><span></span><span></span><br/>
-        <span></span><span></span><span></span>
-    </div>
-    <div class="loading-text">准备中...</div>
+  <div class="loading">
+    <span></span><span></span><span></span><br/>
+    <span></span><span></span><span></span><br/>
+    <span></span><span></span><span></span>
+  </div>
+  <div class="loading-text">准备中...</div>
 {/content}
 {<footer}
 {/footer}
 {<js}
-    <script>
+  <script>
 
-        $script.ready('bundle', function(){
-            function scan() {
-                wx.scanQRCode({
-                    needResult: 1,
-                    scanType: ["qrCode","barCode"],
-                    success: function (res) {
-                        var result = res.resultStr;
+    $script.ready('bundle', function () {
+      function scan() {
+        wx.scanQRCode({
+          needResult: 1,
+          scanType: ["qrCode", "barCode"],
+          success: function (res) {
+            var result = res.resultStr;
 
-                        $('.loading-text').html('准备中...');
+            alert("扫描成功,等待对接有赞优惠,二维码内容为" + result);
+            return;
+            $('.loading-text').html('准备中...');
 
-                        $.ajax({
-                            method: 'POST',
-                            url: "/activity/verifyCoupon/" + result,
-                            dateType: 'json',
-                            contentType: 'application/json'
-                        }).done(function(response) {
+            $.ajax({
+              method: 'POST',
+              url: "/activity/" + result,
+              dateType: 'json',
+              contentType: 'application/json'
+            }).done(function (response) {
 
-                        }).fail(function( response ) {
-                            if( response.status && ( response.status == '500' || response.status == '409' )){
-                                Alert('优惠券已经被领取','好的');
-                            }else{
-                                Alert('优惠券获取失败', '好的');
-                            }
-                        });
-                    }
-                });
-            };
-            var wxParam = {wxParam|js|s};
-            wx.config(wxParam);
-            wx.ready(function(){
-                scan();
+            }).fail(function (response) {
+              if (response.status && ( response.status == '500' || response.status == '409' )) {
+                Alert('优惠券已经被领取', '好的');
+              } else {
+                Alert('优惠券获取失败', '好的');
+              }
             });
+          }
         });
-    </script>
+      };
+      var wxParam = {wxParam|js|s};
+      wx.config(wxParam);
+      wx.ready(function () {
+        scan();
+      });
+    });
+  </script>
 {/js}

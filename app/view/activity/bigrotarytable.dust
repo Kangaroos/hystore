@@ -1,5 +1,5 @@
 {>"common/mobile.layout.dust"/}
-{<title}我的车辆{/title}
+{<title}禾煜扫码领奖{/title}
 {<styles}
     <script src="{@static src="/activity/bigrotarytable/main.scss.js" /}"></script>
 {/styles}
