@@ -23,7 +23,7 @@
           success: function (res) {
             var result = res.resultStr;
 
-            alert("扫描成功,等待对接有赞优惠,二维码内容为" + result);
+            alert("扫描成功,等待对接有赞优惠,二维码内容为\n" + result);
             return;
             $('.loading-text').html('准备中...');
 
