@@ -1,5 +1,5 @@
 "use strict";
-exports.name = "CreateActivityBigRotaryTableVertex";
+exports.name = "CreateQRCodeScan";
 
 exports.up = function (db) {
   // @todo implementation

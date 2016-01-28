@@ -23,12 +23,13 @@
     "glob": "^5.0.15",
     "gulp-livereload": "^3.8.1",
     "gulp-size": "^2.0.0",
-    "koala-bear": "0.0.7",
+    "koala-bear": "0.0.8",
     "lodash": "^3.10.1",
     "moment": "^2.10.6",
     "passport-strategy": "^1.0.0",
     "qr-image": "^3.1.0",
-    "read-yaml": "^1.0.0"
+    "read-yaml": "^1.0.0",
+    "request": "^2.69.0"
   },
   "devDependencies": {
     "concur-gulp-rename": "^1.0.0",
