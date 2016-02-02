@@ -21,7 +21,7 @@ class HyStoreService extends KoalaBear {
 		this.use(function(){
 			return {
 				setup: function*(next) {
-					yield* next
+					yield* next;
 					var self = this;
 					console.log("start listening");
 					var cdn = self._config.cdn || "/static/";
