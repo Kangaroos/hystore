@@ -15,12 +15,17 @@ exports = module.exports = function (app) {
 
   app.passport.use(new YouzanStrategy({
     app: app,
-    clientID: config.clientId,
-    clientSecret: config.clientSecret,
-    callbackURL: `${domain}/callback`,
-    authorizationURL: "https://open.koudaitong.com/oauth/authorize",
-    tokenURL: "https://open.koudaitong.com/oauth/token"
+    clientID: config.appId,
+    clientSecret: config.appSecret,
+    callbackURL: `${domain}/youzan/callback`,
+    tokenURL: `${domain}/youzan/error`,
+    scope: ['snsapi_userinfo'],
+    authorizationURL: "http://wap.koudaitong.com/v2/open/weixin/auth"
   }, youzanAuth));
+
+
+  app.get('/youzan/callback', app.passport.authenticate('hystore-youzan'));
+  app.get('/youzan/error', app.passport.authenticate('hystore-youzan'));
 
   app.group('/activity', app.passport.authenticate('hystore-youzan'), function (router) {
     router.get('/:qrcode', function* activityQRCode() {

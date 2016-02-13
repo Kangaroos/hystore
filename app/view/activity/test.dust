@@ -1,0 +1,15 @@
+{>"common/mobile.layout.dust"/}
+
+{<title}扫一扫{/title}
+{<content}
+  <div class="loading">
+    <span></span><span></span><span></span><br/>
+    <span></span><span></span><span></span><br/>
+    <span></span><span></span><span></span>
+  </div>
+  <div class="loading-text">准备中...</div>
+{/content}
+{<footer}
+{/footer}
+{<js}
+{/js}

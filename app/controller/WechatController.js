@@ -48,6 +48,12 @@ exports = module.exports = function(app) {
             })
         });
 
+        router.get('/test',function * (next) {
+            var self = this;
+
+            yield this.render('activity/test.dust')
+        });
+
         
         //router.get('/action', app.passport.authenticate('eskygo-wechat'), function*(next) {
         //    var urlParse = require("url").parse(this.query.toUrl, true);
