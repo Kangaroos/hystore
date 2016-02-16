@@ -35,7 +35,7 @@ class User {
         })
     }
 
-    static createWithAliasAndProvider(user, alias) {
+    static createWithAlias(user, alias) {
         var self = this;
         return this._app()._crypter.encrypt(user.password)
         .then(function (epass) {
