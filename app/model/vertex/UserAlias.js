@@ -5,6 +5,7 @@ class UserAlias {
     s.string('provider', {required: true})
     s.string('alias', {required: true})
     s.string('type', {required: true})
+    s.string('data')
     s.timestamps();
   }
 
