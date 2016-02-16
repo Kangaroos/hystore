@@ -1,7 +1,6 @@
 "use strict";
 var debug = require('debug')('hystore:admin:AdminController'),
-    Promise = require('bluebird'),
-    LotteryOods = require('../../lib/lottery_odds');
+    Promise = require('bluebird');
 
 
 exports = module.exports = function(app) {

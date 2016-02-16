@@ -3,15 +3,14 @@ var debug = require('debug')('heyu:store:YouzanController');
 
 var Service = require('koala-bear').Spices.Service;
 var readYaml = require('read-yaml');
-
-var YouzanStrategy = require('../../lib/YouzanStrategy');
-var YouzanAuth = require('../../lib/youzan-auth');
-var LotteryOods = require('../../lib/lottery_odds');
+var path = require('path');
 
 exports = module.exports = function (app) {
-  var config = readYaml.sync(require('path').resolve(app._basePath, "./config/youzan.yml"))[app._app.env];
-  var domain = config.domain,
-    youzanAuth = new YouzanAuth(app);
+  let YouzanStrategy = require(path.resolve(app._basePath, "./lib/YouzanStrategy"));
+  let LotteryOods = require(path.resolve(app._basePath, "./lib/lottery-odds"));
+  let youzanAuth = require(path.resolve(app._basePath, "./lib/youzan-auth"));
+  let config = readYaml.sync(path.resolve(app._basePath, "./config/youzan.yml"))[app._app.env];
+  let domain = config.domain, cb = new youzanAuth(app);
 
   app.passport.use(new YouzanStrategy({
     app: app,
@@ -21,7 +20,7 @@ exports = module.exports = function (app) {
     tokenURL: `${domain}/youzan/error`,
     scope: ['snsapi_userinfo'],
     authorizationURL: "http://wap.koudaitong.com/v2/open/weixin/auth"
-  }, youzanAuth));
+  }, cb));
 
 
   app.get('/youzan/callback', app.passport.authenticate('hystore-youzan'));
