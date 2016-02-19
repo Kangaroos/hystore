@@ -23,7 +23,7 @@ class UserAlias {
   static findOrCreate(provider, type, alias, data) {
     var self = this;
     console.log("findOrCreate arguments: ", arguments);
-    return this._orientose()._db.query("select * from UserAlias where provider=:provider and alias=:alias and type=:type", {
+    return self._orientose()._db.query("select * from UserAlias where provider=:provider and alias=:alias and type=:type", {
       params: {
         provider: provider,
         alias: alias,
@@ -32,7 +32,7 @@ class UserAlias {
     }).then(function (result) {
       console.log("find or create result", result);
       if (!result || result.length === 0) {
-        var query = this._orientose().db
+        var query = self._orientose().db
         .let('alias', function(s) {
           return s.create('vertex', 'UserAlias').set({
             provider: provider,
