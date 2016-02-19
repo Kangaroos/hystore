@@ -22,6 +22,16 @@ exports = module.exports = function (app) {
     authorizationURL: "http://wap.koudaitong.com/v2/open/weixin/auth"
   }, cb));
 
+  app.group('/session', function(r) {
+    function* logout() {
+      this.req.logout();
+      return this.redirect('/');
+    }
+
+    r.delete('', logout);
+    r.get('/logout', logout);
+  });
+
 
   app.get('/youzan/callback', app.passport.authenticate('hystore-youzan'));
   app.get('/youzan/error', app.passport.authenticate('hystore-youzan'));
