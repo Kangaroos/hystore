@@ -42,10 +42,10 @@ class UserAlias {
         })
         .one()
         .then(function (alias) {
-          debug("creating user alias now" , alias);
+          console.log("creating user alias now" , alias);
           return self._model._createDocument(alias);
         }).catch(function (e) {
-          debug('Failed creating user alias:', '\r\n', e.message, '\r\n', e.stack);
+          console.log('Failed creating user alias:', '\r\n', e.message, '\r\n', e.stack);
           throw e;
         });
       }
