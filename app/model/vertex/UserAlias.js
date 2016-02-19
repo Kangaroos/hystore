@@ -32,7 +32,7 @@ class UserAlias {
     }).then(function (result) {
       console.log("find or create result", result);
       if (!result || result.length === 0) {
-        let query = this._orientose().db
+        var query = this._orientose().db
         .let('alias', function(s) {
           return s.create('vertex', 'UserAlias').set({
             provider: provider,
@@ -41,6 +41,7 @@ class UserAlias {
             data: data
           });
         });
+        console.log("query is ", query);
         return query.commit().return('$alias').one().then(function (alias) {
           debug("creating user alias now");
           return Promise.resolve(self._model._createDocument(alias));
