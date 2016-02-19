@@ -1,5 +1,7 @@
 "use strict";
 
+var debug = require('debug')('heyu:sotre:UserAlias');
+
 class UserAlias {
   constructor(s, orm) {
     s.string('provider', {required: true})
@@ -22,7 +24,6 @@ class UserAlias {
 
   static findOrCreate(provider, type, alias, data) {
     var self = this;
-    console.log("findOrCreate arguments: ", arguments);
     return self._orientose()._db.query("select * from UserAlias where provider=:provider and alias=:alias and type=:type", {
       params: {
         provider: provider,
@@ -30,9 +31,7 @@ class UserAlias {
         type: type
       }
     }).then(function (result) {
-      console.log("find or create result", result);
       if (!result || result.length === 0) {
-        console.log("create user alias");
         return self._orientose().db.create('VERTEX', 'UserAlias')
         .set({
           provider: provider,
@@ -42,10 +41,9 @@ class UserAlias {
         })
         .one()
         .then(function (alias) {
-          console.log("creating user alias now" , alias);
           return self._model._createDocument(alias);
         }).catch(function (e) {
-          console.log('Failed creating user alias:', '\r\n', e.message, '\r\n', e.stack);
+          debug('Failed creating user alias:', '\r\n', e.message, '\r\n', e.stack);
           throw e;
         });
       }
