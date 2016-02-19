@@ -20,6 +20,37 @@ class UserAlias {
     });
   }
 
+  static findOrCreate(provider, type, alias, data) {
+    var self = this;
+    return this._orientose()._db.query("select * from UserAlias where provider=:provider and alias=:alias and type=:type", {
+      params: {
+        provider: provider,
+        alias: alias,
+        type: type
+      }
+    }).then(function (result) {
+      if (!result || result.length === 0) {
+        let query = this._orientose().db
+        .let('alias', function(s) {
+          return s.create('vertex', 'UserAlias').set({
+            provider: provider,
+            alias: alias,
+            type: type,
+            data: data
+          });
+        });
+        return query.commit().return('$alias').one().then(function (alias) {
+          debug("creating user alias now");
+          return Promise.resolve(self._model._createDocument(alias));
+        }).catch(function (e) {
+          debug('Failed creating user alias:', '\r\n', e.message, '\r\n', e.stack);
+          throw e;
+        });
+      }
+      return self._model._createDocument(result[0]);
+    })
+  }
+
   static createForUserId(userId, alias) {
     var query = this._orientose().db
     .let('alias', function(s) {
