@@ -42,7 +42,7 @@ class UserAlias {
         .one()
         .then(function (alias) {
           debug("creating user alias now" , alias);
-          return Promise.resolve(self._model._createDocument(alias));
+          return self._model._createDocument(alias);
         }).catch(function (e) {
           debug('Failed creating user alias:', '\r\n', e.message, '\r\n', e.stack);
           throw e;
