@@ -22,6 +22,7 @@ class UserAlias {
 
   static findOrCreate(provider, type, alias, data) {
     var self = this;
+    console.log("findOrCreate arguments: ", arguments);
     return this._orientose()._db.query("select * from UserAlias where provider=:provider and alias=:alias and type=:type", {
       params: {
         provider: provider,
@@ -29,6 +30,7 @@ class UserAlias {
         type: type
       }
     }).then(function (result) {
+      console.log("find or create result", result);
       if (!result || result.length === 0) {
         let query = this._orientose().db
         .let('alias', function(s) {
