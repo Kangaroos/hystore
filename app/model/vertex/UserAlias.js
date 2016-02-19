@@ -32,7 +32,8 @@ class UserAlias {
     }).then(function (result) {
       console.log("find or create result", result);
       if (!result || result.length === 0) {
-        self._orientose().db.create('VERTEX', 'UserAlias')
+        console.log("create user alias");
+        return self._orientose().db.create('VERTEX', 'UserAlias')
         .set({
           provider: provider,
           alias: alias,
