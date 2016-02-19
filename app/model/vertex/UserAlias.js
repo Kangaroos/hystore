@@ -32,18 +32,16 @@ class UserAlias {
     }).then(function (result) {
       console.log("find or create result", result);
       if (!result || result.length === 0) {
-        var query = self._orientose().db
-        .let('alias', function(s) {
-          return s.create('vertex', 'UserAlias').set({
-            provider: provider,
-            alias: alias,
-            type: type,
-            data: data
-          });
-        });
-        console.log("query is ", query);
-        return query.commit().return('$alias').one().then(function (alias) {
-          debug("creating user alias now");
+        self._orientose().db.create('VERTEX', 'UserAlias')
+        .set({
+          provider: provider,
+          alias: alias,
+          type: type,
+          data: data
+        })
+        .one()
+        .then(function (alias) {
+          debug("creating user alias now" , alias);
           return Promise.resolve(self._model._createDocument(alias));
         }).catch(function (e) {
           debug('Failed creating user alias:', '\r\n', e.message, '\r\n', e.stack);
