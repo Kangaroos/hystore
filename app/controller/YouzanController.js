@@ -23,6 +23,7 @@ exports = module.exports = function (app) {
   }, cb));
 
   app.group('/session', function(r) {
+
     function* logout() {
       this.req.logout();
       return this.redirect('/');
