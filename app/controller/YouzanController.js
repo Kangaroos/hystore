@@ -26,13 +26,12 @@ exports = module.exports = function (app) {
 
     function* logout() {
       this.req.logout();
-      return this.redirect('/');
+      return this.redirect('/admin');
     }
 
     r.delete('', logout);
     r.get('/logout', logout);
   });
-
 
   app.get('/youzan/callback', app.passport.authenticate('hystore-youzan'));
   app.get('/youzan/error', app.passport.authenticate('hystore-youzan'));
@@ -40,6 +39,7 @@ exports = module.exports = function (app) {
   app.group('/activity', app.passport.authenticate('hystore-youzan'), function (router) {
     router.get('/:qrcode', function* activityQRCode() {
       var result = yield app.wechatApi.createTmpQRCode(100, 2592000);
+      console.log("==================== con req", this, this.req)
       yield this.render('activity/bigrotarytable.dust', {qrurl: app.wechatApi.showQRCodeURL(result.ticket)});
     });
 
